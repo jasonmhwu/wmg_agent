@@ -84,11 +84,15 @@ class Worker(object):
         elif ENV == "Sokoban_Env":
             from environments.sokoban import Sokoban_Env
             environment = Sokoban_Env(seed)
+        elif ENV == "Collins2018_Env":
+            from  environments.Collins2018 import Collins2018Task
+            environment = Collins2018Task(seed)
         else:
             print("Environment {} not found.".format(ENV))
             exit(0)
         self.observation_space = environment.observation_space
         self.action_space = environment.action_space
+        print()
         return environment
 
     def output(self, sz):
